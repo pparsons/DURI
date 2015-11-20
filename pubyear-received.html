@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script language="JavaScript">
+    function processForm()
+    {
+        var parameters = location.search.substring(1).split("&");
+        var temp = parameters[0].split("=");
+        pub = unescape(temp[1]);
+        //alert(l); //Dialog with the text you put on the textbox
+    }
+    processForm();
+</script>
+<script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="pubyear.js"></script>
+</body>
+</html>

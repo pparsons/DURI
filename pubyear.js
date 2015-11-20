@@ -54,9 +54,9 @@ $(document).ready(function () {
              */
             var pubCount = 0;
             for (var i = 0; i < documents.length; i++){
-                if (documents[0]["medline_pub_year"] == pub){
+                if (documents[i]["medline_pub_year"] == pub){
                     pubCount++;
-                    console.log(pubCount);
+                    console.log(documents[i]["medline_pub_year"]);
                 }
             }
 

@@ -60,7 +60,7 @@ $(document).ready(function () {
             var count = 0;
             //var index = -1;
             //
-            //var papers = [];
+            var papers = [ ];
             //var temp = documents[0]["medline_descriptor_name"] + ' ';
             //var names = temp.split(",");
             //console.log(names.length);
@@ -87,15 +87,28 @@ $(document).ready(function () {
 
                         //console.log("tmp: " + tmp);
                         if (tmp == lowerCase) {
+                            console.log("tmp: " + tmp);
+                            papers[count] = documents[i];
                             count++;
 
                         }
                     }
+
                 }
             }
 
-            document.write("We found " + count + " papers which contain " + "\"" + l + "\"");
-            document.write("<br>");
+            //document.write("We found " + count + " papers which contain " + "\"" + l + "\"");
+            document.write("Total: " + documents.length + "<br>");
+            document.write("Search Keyword: " + l);
+            document.write("<br><br><br><br><br><hr>");
+
+            for (var i = 0; i < papers.length; i++) {
+                document.write((i + 1) + ". " + "Article Title: " + papers[i]["medline_article_title"] + "<br>");
+                document.write("   " + "Journal Title: " + papers[i]["medline_journal_title"] + "<br>");
+                document.write("Genes: " + papers[i]["genes"].toString() + "<br>");
+                document.write("Medline Descriptor Name: " + papers[i]["medline_descriptor_name"].toString());
+                document.write("<br><br><br><hr>");
+            }
             //document.write("Here is information about the paper");
 
             /*

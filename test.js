@@ -46,33 +46,62 @@ $(document).ready(function () {
             var documents = data.response.docs;
             var clusters = data.clusters;
 
+            function myTrim(x) {
+                return x.replace(/^\s+|\s+$/gm,'');
+            }
+            function isAlpha(c) {
+                return (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')));
+            }
 
 
             //do something with the data here!
 
             /*
-            param-received.html
+             param-received.html
              */
             console.log(data);
 
             var count = 0;
 
-            l = l.toLowerCase();
 
-            for (var i = 0; i < clusters.length; i++){
+            var request = l;
+
+            for (var i = 0; i < request.length; i++){
+                if(!isAlpha(request.charAt(i))){
+                    request[i] = " ";
+                }
+            }
+
+
+            console.log("after " + request);
+            request = request.toLowerCase();
+            console.log("after2 " + request);
+
+            var labels = [];
+
+            for (var i = 0; i < clusters.length; i++) {
                 var label = clusters[i]["labels"] + '';
                 label = label.toLowerCase();
 
                 //console.log(label);
                 var str = label.split(" ");
-                for (var j = 0; j < str.length; j++){
-                    if(l == str[j])
-                    count++;
+                for (var j = 0; j < str.length; j++) {
+                    if (request == str[j]) {
+                        labels[count] = clusters[i]["labels"];
+                        count++;
+                    }
+
                 }
 
             }
 
-            document.write("The data set contains " + count + " " + l);
+            document.write("The data set contains " + request + " " + count + " of " + clusters.length);
+            document.write("<br><br><br><br><br><hr>");
+            for (var i = 0; i < labels.length; i++) {
+                document.write((i + 1) + ". " + "Label(s): " + labels[i]);
+                document.write("<br><br><br><hr>");
+            }
+
 
             /*
              end of param-received.html

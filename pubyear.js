@@ -48,20 +48,37 @@ $(document).ready(function () {
 
             console.log(data);
 
+            //Array of papers at the specific year.
+            var paper = [];
 
             /*
              pubyear-received.html
              */
+
             var pubCount = 0;
-            for (var i = 0; i < documents.length; i++){
-                if (documents[i]["medline_pub_year"] == pub){
+            for (var i = 0; i < documents.length; i++) {
+                if (documents[i]["medline_pub_year"] == pub) {
+                    //paper[pubCount] = documents[i]["medline_pub_year"];
+                    paper[pubCount] = documents[i];
                     pubCount++;
-                    console.log(documents[i]["medline_pub_year"]);
+                    //console.log(documents[i]["medline_pub_year"]);
+
                 }
             }
 
-            document.write("There are  " + pubCount + " of papers at " + pub);
 
+            console.log(paper.length);
+
+            document.write("There are  " + pubCount + " of papers at " + pub);
+            document.write("<br>" + "Following is details of papers");
+            document.write("<br><br><br><br><br><hr>");
+
+            for (var i = 0; i < paper.length; i++) {
+                document.write((i + 1) + ". " + "Article Title: " + paper[i]["medline_article_title"] + "<br>");
+                document.write("   " + "Journal Title: " + paper[i]["medline_journal_title"] + "<br>");
+                document.write("Genes: " + paper[i]["genes"].toString());
+                document.write("<br><br><br><hr>");
+            }
         });
 });
 

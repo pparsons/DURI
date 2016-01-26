@@ -1,0 +1,15 @@
+ $(document).ready(function() {
+   $('.circle').mouseenter(function() {
+       $(this).animate({
+           height: '+=10px'
+       });
+   });
+   $('.circle').mouseleave(function() {
+       $(this).animate({
+           height: '-=10px'
+       }); 
+   });
+   $('.circle').click(function() {
+       $(this).toggle(1000);
+   }); 
+});

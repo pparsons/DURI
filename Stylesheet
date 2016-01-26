@@ -1,0 +1,32 @@
+.circle
+{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background-color:#FA6900;
+  border-radius: 100%;
+  text-align: center;
+  display:inline-block;
+  opacity: 1;
+  vertical-align: middle;
+}
+
+.bar
+{
+  display: inline;
+  width: 20px;
+  height: 75px;
+  background-color: teal;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}

@@ -1,8 +1,3 @@
-/**
- * Created by paulparsons on 11/18/15.
- */
-
-
 //when the page is ready
 function IsDefined($Name) {
     return (window[$Name] != undefined);
@@ -57,57 +52,23 @@ $(document).ready(function () {
             //do something with the data here!
 
             /*
-             param-received.html
+             labelSearch.html
              */
-            console.log(data);
+            //console.log(data);
 
-            var count = 0;
-
-
-            var request = l;
-
-            for (var i = 0; i < request.length; i++){
-                if(!isAlpha(request.charAt(i))){
-                    request[i] = " ";
-                }
-            }
+            var dataArr = data;
+            console.log(dataArr);
+            document.write(dataArr["response"]["docs"][0]["genes"]);
 
 
-            console.log("after " + request);
-            request = request.toLowerCase();
-            console.log("after2 " + request);
+            //console.log(clusters);
 
-            var labels = [];
-
-            for (var i = 0; i < clusters.length; i++) {
-                var label = clusters[i]["labels"] + '';
-                label = label.toLowerCase();
-
-                //console.log(label);
-                var str = label.split(" ");
-                for (var j = 0; j < str.length; j++) {
-                    if (request == str[j]) {
-                        labels[count] = clusters[i]["labels"];
-                        count++;
-                    }
-
-                }
-
-            }
-
-            document.write("The data set contains " + request + " " + count + " of " + clusters.length);
-            document.write("<br><br><br><br><br><hr>");
-            for (var i = 0; i < labels.length; i++) {
-                document.write((i + 1) + ". " + "Label(s): " + labels[i]);
-                document.write("<br><br><br><hr>");
-            }
 
 
             /*
-             end of param-received.html
+             end of labelSearch.html
              */
 
 
         });
 });
-
